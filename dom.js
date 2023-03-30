@@ -25,7 +25,6 @@ export const marcarCelda = (celda) => {
   celda.innerHTML = jugadorActual;
 
   // TODO Comprobar si el jugador actual ha ganado, si es así, mostrar el mensaje de ganador en el elemento con id 'result' y terminar la ejecución de la función (ver ejemplo de los condicionales de arriba y abajo que terminan con return)
-
   if (checkWin(jugadorActual, celdas)) {
     document.querySelector(
       "#result"

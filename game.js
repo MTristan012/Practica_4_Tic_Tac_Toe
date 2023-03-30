@@ -61,6 +61,6 @@ export const checkWin = (player,celdas) => {
 
   // Si ninguna combinación ganadora se cumple, retornar false
   return false;
-}
+};
 
 
