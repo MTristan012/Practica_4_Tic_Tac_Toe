@@ -6,18 +6,24 @@ const player2 = "O";
 let turnoActual = 1;
 let jugadorActual = player1;
 
+//Funciones Importadas de dom.js
+import { celdas } from "./dom.js";
+
+//Funciones importadas de game.js
+import { comprobarEmpate, checkWin } from "./game.js";
+
 // Obtener todas las celdas del tablero
-const celdas = document.querySelectorAll(".cell"); // celdas | celda
+//const celdas = document.querySelectorAll(".cell"); // celdas | celda
 
 // TODO Agregar un evento de click a cada celda con la funcion 'marcarCelda'
 
-
-celdas.forEach( celda => celda.addEventListener("click", () => marcarCelda(celda) ))
-
+celdas.forEach((celda) =>
+  celda.addEventListener("click", () => marcarCelda(celda))
+);
 
 // funcion para marcar la celda
 function marcarCelda(celda) {
-  console.log(celda)
+  console.log(celda);
   // Comprobar si la celda ya ha sido marcada
   if (celda.innerHTML !== "") {
     alert("Esta celda ya ha sido marcada. Por favor seleccione otra.");
@@ -29,13 +35,15 @@ function marcarCelda(celda) {
 
   // TODO Comprobar si el jugador actual ha ganado, si es así, mostrar el mensaje de ganador en el elemento con id 'result' y terminar la ejecución de la función (ver ejemplo de los condicionales de arriba y abajo que terminan con return)
 
-  if (checkWin(jugadorActual)) {
-    document.querySelector('#result').innerHTML = `El ganador es ${jugadorActual}`
+  if (checkWin(jugadorActual, celdas)) {
+    document.querySelector(
+      "#result"
+    ).innerHTML = `El ganador es ${jugadorActual}`;
     return;
   }
 
   // Comprobar si hay empate
-  if (comprobarEmpate()) {
+  if (comprobarEmpate(celdas)) {
     document.getElementById("result").innerHTML = "¡Empate!";
     return;
   }
@@ -45,7 +53,6 @@ function marcarCelda(celda) {
   jugadorActual = turnoActual % 2 === 0 ? player2 : player1;
 }
 
-
 // Este evento se ejecuta cuando se hace click en el botón de reiniciar, lo que hay aqui es una funcion flecha, escribe el codigo dentro del bloque como con otra funcion normal
 document.getElementById("reset").addEventListener("click", () => {
   // TODO Reiniciar las variables de turnos y jugador actual
@@ -53,26 +60,26 @@ document.getElementById("reset").addEventListener("click", () => {
   jugadorActual = player1;
 
   // TODO Reiniciar el contenido de todas las celdas
-celdas.forEach( celda => celda.innerHTML = "")
-
+  celdas.forEach((celda) => (celda.innerHTML = ""));
 
   // TODO Reiniciar el contenido del elemento de id 'result
   document.querySelector("#result").innerHTML = "";
 });
 
 // Función para comprobar si hay empate
+/*
 function comprobarEmpate() {
   for (let i = 0; i < celdas.length; i++) {
     if (celdas[i].innerHTML === "") {
       return false;
     }
   }
-
   return true;
 }
-
+*/
 
 // Función para comprobar si el jugador actual ha ganado
+/*
 function checkWin(player) {
   // Comprobar las combinaciones ganadoras
   if (
@@ -128,3 +135,4 @@ function checkWin(player) {
   // Si ninguna combinación ganadora se cumple, retornar false
   return false;
 }
+*/
