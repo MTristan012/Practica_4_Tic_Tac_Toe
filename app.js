@@ -1,13 +1,13 @@
 // Definir los jugadores y su respectivo símbolo
-const player1 = "X";
-const player2 = "O";
+export const player1 = "X";
+export const player2 = "O";
 
 // Variables para llevar la cuenta de los turnos y el jugador actual
-let turnoActual = 1;
-let jugadorActual = player1;
+export let turnoActual = 1;
+export let jugadorActual = player1;
 
 //Funciones Importadas de dom.js
-import { celdas } from "./dom.js";
+import { celdas, reset } from "./dom.js";
 
 //Funciones importadas de game.js
 import { comprobarEmpate, checkWin } from "./game.js";
@@ -17,11 +17,13 @@ import { comprobarEmpate, checkWin } from "./game.js";
 
 // TODO Agregar un evento de click a cada celda con la funcion 'marcarCelda'
 
+
 celdas.forEach((celda) =>
   celda.addEventListener("click", () => marcarCelda(celda))
 );
 
 // funcion para marcar la celda
+
 function marcarCelda(celda) {
   console.log(celda);
   // Comprobar si la celda ya ha sido marcada
@@ -53,11 +55,10 @@ function marcarCelda(celda) {
   jugadorActual = turnoActual % 2 === 0 ? player2 : player1;
 }
 
-// Este evento se ejecuta cuando se hace click en el botón de reiniciar, lo que hay aqui es una funcion flecha, escribe el codigo dentro del bloque como con otra funcion normal
-document.getElementById("reset").addEventListener("click", () => {
-  // TODO Reiniciar las variables de turnos y jugador actual
-  turnoActual = 1;
-  jugadorActual = player1;
+
+//celda, celdas, jugadorActual, turnoActual, player1, player2, checkwin
+
+reset.addEventListener("click", () => {
 
   // TODO Reiniciar el contenido de todas las celdas
   celdas.forEach((celda) => (celda.innerHTML = ""));
@@ -66,6 +67,19 @@ document.getElementById("reset").addEventListener("click", () => {
   document.querySelector("#result").innerHTML = "";
 });
 
+
+// Este evento se ejecuta cuando se hace click en el botón de reiniciar, lo que hay aqui es una funcion flecha, escribe el codigo dentro del bloque como con otra funcion normal
+// document.getElementById("reset").addEventListener("click", () => {  erick..
+//   // TODO Reiniciar las variables de turnos y jugador actual
+//   turnoActual = 1;
+//   jugadorActual = player1;
+
+//   // TODO Reiniciar el contenido de todas las celdas
+//   celdas.forEach((celda) => (celda.innerHTML = ""));
+
+//   // TODO Reiniciar el contenido del elemento de id 'result
+//   document.querySelector("#result").innerHTML = "";
+// });
 // Función para comprobar si hay empate
 /*
 function comprobarEmpate() {
